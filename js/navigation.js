@@ -3,6 +3,11 @@
 // (bukan lewat URL/router). Bottom nav diperbarui via updateNavActive().
 
 function startApp() {
+  // Ambil nama dari input splash; kosong → fallback 'Peserta Didik'.
+  const input = document.getElementById('namaInput');
+  const nama = input ? input.value.trim() : '';
+  state.name = nama || 'Peserta Didik';
+
   document.getElementById('splash').classList.add('hide');
   setTimeout(() => {
     document.getElementById('app').classList.add('visible');
@@ -85,6 +90,11 @@ function doneModule(n) {
 }
 
 function showSertifikat() {
+  // Isi nama peserta dan nilai kelulusan ke sertifikat dari state.
+  document.getElementById('sertName').textContent = state.name;
+  const scoreEl = document.getElementById('sertScore');
+  if (scoreEl) scoreEl.textContent = state.quizScore;
+
   showScreen('screenSertifikat');
   updateNavActive(3);
 }
