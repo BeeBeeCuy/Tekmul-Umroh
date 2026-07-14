@@ -7,6 +7,7 @@ function startApp() {
   const input = document.getElementById('namaInput');
   const nama = input ? input.value.trim() : '';
   state.name = nama || 'Peserta Didik';
+  saveState(); // simpan nama agar bisa mem-prefill input saat reload berikutnya
 
   document.getElementById('splash').classList.add('hide');
   setTimeout(() => {
@@ -78,12 +79,7 @@ function doneModule(n) {
     addXP(50);
   }
 
-  // Buka kunci modul berikutnya
-  if (n < 4) {
-    const nextCard = document.getElementById('card' + (n + 1));
-    if (nextCard) nextCard.classList.remove('locked');
-  }
-
+  // Gembok modul berikutnya kini diturunkan dari state di updateProgressUI().
   updateProgressUI();
   // Lanjut ke kuis mini modul
   startQuiz(n);

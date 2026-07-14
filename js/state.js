@@ -1,7 +1,11 @@
 // ─── STATE ───
-// State aplikasi disimpan di memori (tidak persist — reset saat halaman di-reload).
+// State aplikasi dipersist ke localStorage (key 'tekmul-umroh-state') lewat
+// saveState(), dan dipulihkan saat mulai lewat loadState().
 // Semua perubahan yang memengaruhi progres harus lewat addXP()/updateProgressUI()
-// agar tampilan XP, progress bar, dan status modul tetap sinkron.
+// agar tampilan XP, progress bar, status modul, DAN localStorage tetap sinkron
+// (updateProgressUI memanggil saveState() di akhir).
+const STORAGE_KEY = 'tekmul-umroh-state';
+
 const state = {
   xp: 0,
   modulesDone: [false, false, false, false],
@@ -56,9 +60,80 @@ function updateProgressUI() {
     }
   }
 
+  // Status gembok modul diturunkan dari state (bukan disimpan di DOM): modul n+1
+  // terbuka begitu modul n selesai. Dengan begini hasil loadState() otomatis
+  // membuka modul yang sudah diselesaikan tanpa perlu menyentuh DOM di doneModule.
+  for (let n = 1; n <= 3; n++) {
+    const nextCard = document.getElementById('card' + (n + 1));
+    if (nextCard && state.modulesDone[n - 1]) {
+      nextCard.classList.remove('locked');
+    }
+  }
+
   const evalBadge = document.getElementById('evalBadge');
   if (state.modulesDone.every(Boolean)) {
     evalBadge.textContent = '✅ Siap — Mulai Evaluasi Akhir';
     evalBadge.className = 'badge badge-green';
   }
+
+  saveState();
+}
+
+// ─── PERSISTENSI ───
+
+function saveState() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (e) {
+    // localStorage bisa gagal (mode privat / kuota penuh) — abaikan diam-diam.
+  }
+}
+
+// Baca state tersimpan, validasi bentuk dasarnya, lalu merge ke `state`.
+// Data korup/tak dikenal diabaikan tanpa memunculkan error ke pengguna.
+function loadState() {
+  let saved;
+  try {
+    saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  } catch (e) {
+    return; // bukan JSON valid → abaikan
+  }
+  if (!saved || typeof saved !== 'object') return;
+
+  if (typeof saved.xp === 'number' && isFinite(saved.xp)) state.xp = saved.xp;
+
+  if (Array.isArray(saved.modulesDone) && saved.modulesDone.length === 4 &&
+      saved.modulesDone.every(v => typeof v === 'boolean')) {
+    state.modulesDone = saved.modulesDone;
+  }
+
+  if (Array.isArray(saved.tabsDone) && saved.tabsDone.length === 4 &&
+      saved.tabsDone.every(Array.isArray)) {
+    state.tabsDone = saved.tabsDone;
+  }
+
+  if (typeof saved.kasusDone === 'boolean') state.kasusDone = saved.kasusDone;
+  if (typeof saved.quizScore === 'number' && isFinite(saved.quizScore)) state.quizScore = saved.quizScore;
+  if (typeof saved.quizDone === 'boolean') state.quizDone = saved.quizDone;
+
+  if (saved.quizXP &&
+      Array.isArray(saved.quizXP.attempted) && saved.quizXP.attempted.length === 5 &&
+      Array.isArray(saved.quizXP.passed) && saved.quizXP.passed.length === 5 &&
+      saved.quizXP.attempted.every(v => typeof v === 'boolean') &&
+      saved.quizXP.passed.every(v => typeof v === 'boolean')) {
+    state.quizXP = saved.quizXP;
+  }
+
+  if (typeof saved.name === 'string' && saved.name) state.name = saved.name;
+}
+
+// Hapus progres tersimpan lalu muat ulang halaman (dipakai tombol "Mulai ulang").
+function resetProgress() {
+  if (!confirm('Yakin ingin menghapus seluruh progres dan mulai dari awal?')) return;
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (e) {
+    // abaikan — tetap muat ulang di bawah
+  }
+  location.reload();
 }

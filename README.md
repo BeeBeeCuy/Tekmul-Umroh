@@ -11,7 +11,7 @@ Proyek ini dibangun menggunakan Vanilla HTML, CSS, dan JavaScript, serta dilengk
 *   **Modul Terstruktur:** Materi dibagi menjadi 4 modul utama (Pengertian, Niat & Tata Cara, Larangan, dan Tahapan Umroh).
 *   **Audio Panduan:** Dilengkapi dengan pemutar audio terintegrasi untuk mendengarkan lafal Niat dan doa Talbiyah.
 *   **Studi Kasus & Kuis Interaktif:** Evaluasi pemahaman pengguna melalui kuis pilihan ganda dan studi kasus larangan ihram dengan sistem skoring.
-*   **Progress Tracking & Gamifikasi:** Pengguna dapat melihat progres penyelesaian modul (dalam bentuk XP) yang membuka kunci untuk kuis akhir.
+*   **Progress Tracking & Gamifikasi:** Pengguna dapat melihat progres penyelesaian modul (dalam bentuk XP) yang membuka kunci untuk kuis akhir. Progres tersimpan otomatis di `localStorage` peramban, jadi tetap pulih setelah halaman ditutup atau di-*reload*; tersedia pula tombol **Mulai ulang progres** untuk menghapusnya.
 *   **Sertifikat Digital:** Menghasilkan sertifikat kelulusan bagi pengguna yang berhasil menyelesaikan kuis dengan nilai minimum.
 *   **Desain Responsif:** Tampilan antarmuka yang ramah pengguna (UI/UX) dan dapat diakses dengan baik melalui perangkat *mobile* maupun *desktop*.
 

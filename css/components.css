@@ -52,6 +52,25 @@
   display: block;
 }
 
+/* Tombol kecil "Mulai ulang progres" di beranda */
+.btn-reset {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.btn-reset:hover {
+  color: var(--red);
+  background: var(--red-pale);
+}
+
 /* responsive */
 @media (max-width: 480px) {
   .modules-grid { grid-template-columns: 1fr 1fr; gap: 10px; padding: 16px; }

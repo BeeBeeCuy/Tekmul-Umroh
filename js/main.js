@@ -21,6 +21,18 @@ const SCREENS = [
 async function bootstrap() {
   const container = document.getElementById('screensContainer');
 
+  // Prefill nama di splash lebih awal: splash sudah tampil, sedangkan loadState()
+  // penuh baru berjalan setelah partial dimuat. Baca ringan khusus untuk nama.
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+    if (saved && typeof saved.name === 'string' && saved.name && saved.name !== 'Peserta Didik') {
+      const namaInput = document.getElementById('namaInput');
+      if (namaInput) namaInput.value = saved.name;
+    }
+  } catch (e) {
+    // data korup → abaikan, biarkan input kosong
+  }
+
   try {
     // Ambil semua partial secara paralel, tapi susun sesuai urutan SCREENS.
     const htmlParts = await Promise.all(
@@ -34,7 +46,8 @@ async function bootstrap() {
 
     container.insertAdjacentHTML('beforeend', htmlParts.join('\n'));
 
-    // Semua layar sudah di DOM — sinkronkan tampilan progres.
+    // Pulihkan progres tersimpan sebelum render, lalu sinkronkan tampilan.
+    loadState();
     updateProgressUI();
   } catch (err) {
     console.error(err);
