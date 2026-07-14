@@ -6,8 +6,16 @@ const state = {
   xp: 0,
   modulesDone: [false, false, false, false],
   tabsDone: [[false, false, false], [false, false, false], [], [false, false, false, false]],
+  kasusDone: false,
   quizScore: 0,
   quizDone: false,
+  // Pelacakan XP kuis per identitas (indeks 0 = evaluasi akhir, 1–4 = modul):
+  //  - attempted: kuis sudah pernah diselesaikan → percobaan berikutnya tanpa XP per-soal.
+  //  - passed:    kuis sudah pernah lulus → bonus +100 hanya diberikan sekali.
+  quizXP: {
+    attempted: [false, false, false, false, false],
+    passed: [false, false, false, false, false]
+  },
   name: 'Peserta Didik'
 };
 
@@ -17,7 +25,14 @@ function addXP(n) {
 }
 
 function updateProgressUI() {
-  const maxXP = 600;
+  // XP maksimum deterministik setelah guard anti-farming — tiap sumber hanya sekali:
+  //   completeTab  : 4 tab (m1-t1, m1-t2, m2-t1, m2-t2) × 10 =  40
+  //   studi kasus  : 1 × 20                                  =  20
+  //   selesai modul: 4 × 50                                  = 200
+  //   kuis (5: modul 1–4 + evaluasi akhir), tiap kuis
+  //                  (5 benar × 15) + 100 bonus lulus = 175 → 5 × 175 = 875
+  //   ── total ──────────────────────────────────────────────────── = 1135
+  const maxXP = 1135;
   const pct = Math.min(100, Math.round(state.xp / maxXP * 100));
 
   document.getElementById('xpText').textContent = state.xp + ' XP';

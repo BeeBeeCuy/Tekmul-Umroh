@@ -59,10 +59,12 @@ function showTab(mod, tab) {
 }
 
 function completeTab(mod, tab) {
-  if (state.tabsDone[mod - 1]) {
-    state.tabsDone[mod - 1][tab - 1] = true;
+  const tabs = state.tabsDone[mod - 1];
+  // XP hanya diberikan sekali per tab; kunjungan ulang tidak menambah XP.
+  if (tabs && !tabs[tab - 1]) {
+    tabs[tab - 1] = true;
+    addXP(10);
   }
-  addXP(10);
 }
 
 function doneModule(n) {

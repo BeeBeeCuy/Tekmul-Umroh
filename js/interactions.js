@@ -33,7 +33,11 @@ function kasusJawab(idx, correct) {
     ? '✅ Tepat! Menggunakan wewangian saat ihram wajib membayar fidyah (berpuasa 3 hari, atau memberi makan 6 orang miskin, atau menyembelih seekor kambing).'
     : '❌ Belum tepat. Jawaban yang benar adalah B — wajib membayar fidyah karena melanggar larangan ihram.';
 
-  if (correct === 'benar') addXP(20);
+  // XP studi kasus hanya diberikan sekali (mencegah farming, penting setelah state persist).
+  if (correct === 'benar' && !state.kasusDone) {
+    state.kasusDone = true;
+    addXP(20);
+  }
 }
 
 function toggleTL(idx) {
