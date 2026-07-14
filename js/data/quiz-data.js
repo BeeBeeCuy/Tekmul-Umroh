@@ -1,0 +1,16 @@
+// ─── QUIZ DATA ───
+// Bank soal bersama untuk kuis mini per-modul maupun evaluasi akhir.
+// Format tiap soal: { q, opts, ans (index jawaban benar), explain }.
+// Dipakai oleh js/quiz.js.
+const quizData = [
+  { q: 'Secara bahasa, kata "ihram" berasal dari akar kata Arab yang berarti...', opts: ['Menyucikan', 'Mengharamkan / melarang', 'Memuliakan', 'Mewajibkan'], ans: 1, explain: 'Ihram berasal dari kata حرم (harama) yang berarti mengharamkan, karena seseorang yang berihram mengharamkan dirinya dari hal-hal yang dilarang.' },
+  { q: 'Pakaian ihram pria terdiri dari...', opts: ['Satu lembar kain berwarna putih', 'Dua lembar kain putih tidak berjahit (izar dan rida\')', 'Baju gamis putih panjang', 'Jubah putih berjahit'], ans: 1, explain: 'Pria memakai dua lembar kain putih tidak berjahit: izar (bawah) dan rida\' (atas).' },
+  { q: 'Lafal niat ihram umroh yang benar adalah...', opts: ['Nawaitu al-hajja', 'Labbaika Allāhumma \'umratan', 'Allāhumma labbaik', 'Nawaitu al-\'umrata wa ahrамtu bihā'], ans: 1, explain: 'Bacaan niat ihram umroh yang shahih adalah "Labbaika Allāhumma \'umratan" artinya ya Allah aku sambut panggilan-Mu untuk umroh.' },
+  { q: 'Tawaf dalam umroh dilaksanakan sebanyak...', opts: ['5 putaran', '6 putaran', '7 putaran', '8 putaran'], ans: 2, explain: 'Tawaf wajib dilaksanakan sebanyak 7 putaran, dimulai dan diakhiri di Hajar Aswad.' },
+  { q: 'Sa\'i dimulai dari bukit...', opts: ['Marwah ke Shafa', 'Shafa ke Marwah kemudian seterusnya', 'Arafah ke Muzdalifah', 'Mina ke Mekah'], ans: 1, explain: 'Sa\'i dimulai dari Shafa menuju Marwah (1 perjalanan), lalu Marwah ke Shafa (2), seterusnya 7 perjalanan dan berakhir di Marwah.' },
+  { q: 'Tahallul adalah...', opts: ['Niat memasuki ihram', 'Shalat sunnah di Masjidil Haram', 'Mencukur atau memendekkan rambut sebagai penanda selesainya ihram', 'Doa penutup tawaf'], ans: 2, explain: 'Tahallul adalah mencukur/memendekkan rambut yang menandai berakhirnya ihram. Pria dianjurkan cukur habis (halq).' },
+  { q: 'Larangan ihram yang paling berat (jika dilanggar pada haji menyebabkan ibadah batal) adalah...', opts: ['Memotong rambut', 'Memakai parfum', 'Hubungan suami-istri', 'Menutup kepala bagi pria'], ans: 2, explain: 'Jima\' (hubungan suami-istri) sebelum tahallul pertama adalah larangan terberat dalam haji yang menyebabkan hajinya batal.' },
+  { q: 'Wanita yang berihram dilarang...', opts: ['Memakai cadar dan sarung tangan', 'Memakai jilbab berwarna', 'Berjalan cepat saat tawaf', 'Masuk Masjidil Haram'], ans: 0, explain: 'Wanita yang berihram dilarang menutup wajah (cadar/niqab) dan tidak boleh memakai sarung tangan.' },
+  { q: 'Talbiyah wajib dibaca mulai dari...', opts: ['Saat memasuki Masjidil Haram', 'Setelah niat ihram di miqat hingga melihat Ka\'bah', 'Hanya saat tawaf putaran pertama', 'Sepanjang sa\'i saja'], ans: 1, explain: 'Talbiyah dibaca setelah mengucapkan niat ihram dan terus dibaca hingga melihat Ka\'bah untuk umroh.' },
+  { q: 'Miqat makani bagi jamaah umroh dari Indonesia yang terbang langsung ke Jeddah adalah...', opts: ['Di Madinah (Bir Ali/Dzulhulaifah)', 'Di atas pesawat saat melewati garis miqat atau di bandara Jeddah', 'Di Mina', 'Di Arafah'], ans: 1, explain: 'Jamaah dari Indonesia yang terbang langsung ke Jeddah miqatnya di atas pesawat saat melewati garis miqat, atau bisa berihram langsung dari rumah.' },
+];

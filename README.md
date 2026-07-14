@@ -19,29 +19,58 @@ Proyek ini dibangun menggunakan Vanilla HTML, CSS, dan JavaScript, serta dilengk
 
 ## 📂 Struktur Proyek
 
-Berdasarkan repositori ini, file dan folder diatur sebagai berikut:
+Agar mudah dipelihara, kode dipecah menjadi beberapa file berdasarkan perannya:
 
-*   **`audio/`** — Direktori ini digunakan untuk menyimpan aset suara/audio berformat `.mp3` (contoh: rekaman Niat Umroh dan Talbiyah).
-*   **`index.html`** — File utama yang berisi kerangka struktur halaman antarmuka aplikasi (App Shell, Topbar, Bottom Nav, dan Screen content).
-*   **`style.css`** — File yang memuat seluruh gaya desain, animasi, warna, dan tata letak (layout) responsif aplikasi.
-*   **`script.js`** — File JavaScript yang mengontrol logika aplikasi, sistem navigasi antar-layar (Single Page Application feel), state management, pemutar audio, dan logika kuis.
+```
+Tekmul-Umroh/
+├── index.html            ← kerangka (shell): splash, topbar, bottom-nav
+├── assets/audio/         ← aset suara .mp3 (Niat Umroh, Talbiyah)
+├── css/                  ← gaya dipecah per bagian
+│   ├── base.css          ← variabel warna (:root), reset, body
+│   ├── splash.css        ← layar pembuka
+│   ├── layout.css        ← app shell, topbar, bottom-nav, transisi layar
+│   ├── home.css          ← hero & kartu modul
+│   ├── lesson.css        ← materi, tab, larangan, timeline
+│   ├── quiz.css          ← kuis, umpan balik, hasil
+│   ├── certificate.css   ← sertifikat
+│   └── components.css    ← badge, info-row, media query responsif
+├── js/                   ← logika aplikasi
+│   ├── main.js           ← bootstrap: memuat partial screens/ via fetch()
+│   ├── state.js          ← state, XP, updateProgressUI
+│   ├── navigation.js     ← perpindahan layar & tab
+│   ├── quiz.js           ← mesin kuis
+│   ├── audio.js          ← pemutar audio
+│   ├── interactions.js   ← larangan, studi kasus, timeline
+│   └── data/             ← data konten
+│       ├── quiz-data.js
+│       └── larangan-data.js
+└── screens/              ← isi tiap layar (dimuat saat runtime)
+    ├── home.html
+    ├── module1.html … module4.html
+    ├── quiz.html
+    └── certificate.html
+```
+
+`index.html` hanya berisi kerangka; isi tiap layar dimuat dari `screens/*.html` oleh `js/main.js` menggunakan `fetch()`, lalu disuntikkan ke dalam `.main-content`.
+
 *   **`About Project Umroh.docx`** — Dokumen Microsoft Word yang berisi latar belakang, ringkasan, atau penjelasan lebih detail mengenai konsep awal proyek edukasi ini.
 
 ---
 
 ## 🚀 Cara Menjalankan Aplikasi
 
-Karena aplikasi ini dibangun murni di sisi klien (Client-Side), Anda tidak memerlukan instalasi server atau dependensi (*package manager*) tambahan.
+Aplikasi tetap murni sisi klien (tanpa dependensi/*package manager*). Namun karena layar dimuat lewat `fetch()`, aplikasi **harus dijalankan melalui server lokal** — membukanya langsung dengan klik ganda (`file://`) akan diblokir browser.
 
 1.  **Clone Repositori:**
     ```bash
-    git clone [https://github.com/BeeBeeCuy/Tekmul-Umroh.git](https://github.com/BeeBeeCuy/Tekmul-Umroh.git)
+    git clone https://github.com/BeeBeeCuy/Tekmul-Umroh.git
     ```
     *(Atau klik tombol hijau **Code** > **Download ZIP** lalu ekstrak file-nya).*
-2.  **Pastikan Aset Tersedia:** 
-    Pastikan file audio yang dipanggil pada tombol di `index.html` (misalnya `talbiyah.mp3`) sudah diletakkan dengan benar di dalam folder `audio/`.
-3.  **Buka Aplikasi:**
-    Klik kanan pada file `index.html` dan pilih **Open with...** lalu pilih browser modern favorit Anda (Google Chrome, Mozilla Firefox, Safari, atau Microsoft Edge).
+2.  **Jalankan lewat server lokal** — pilih salah satu:
+    *   **VS Code:** klik kanan `index.html` → **Open with Live Server** (ekstensi *Live Server*).
+    *   **Python:** dari folder proyek jalankan `python -m http.server 8000`, lalu buka `http://localhost:8000`.
+    *   **Node:** `npx serve` (atau `npx http-server`) dari folder proyek.
+3.  **Buka di browser modern** (Chrome, Firefox, Edge, Safari) melalui alamat `http://localhost:...` yang diberikan server.
 
 ---
 

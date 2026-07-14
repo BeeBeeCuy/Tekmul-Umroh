@@ -1,0 +1,53 @@
+<div class="screen" id="screenM3">
+  <div class="lesson-header">
+    <button class="btn-back" onclick="goHome()">← Kembali</button>
+    <div class="lesson-title-bar">
+      <h2>Larangan Ihram</h2>
+      <p>Modul 3 · Interaktif</p>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <div class="content-card">
+      <h3>🚫 Larangan-Larangan Saat Berihram</h3>
+      <p style="margin-bottom:14px;">Klik setiap larangan untuk melihat penjelasan lengkap dan konsekuensinya (dam/fidyah).</p>
+      <div class="larangan-grid" id="laranganGrid">
+        <div class="larangan-item" onclick="showLarangan(0)"><span class="larangan-emoji">✂️</span><div class="larangan-name">Potong rambut/kuku</div></div>
+        <div class="larangan-item" onclick="showLarangan(1)"><span class="larangan-emoji">🌸</span><div class="larangan-name">Memakai wewangian</div></div>
+        <div class="larangan-item" onclick="showLarangan(2)"><span class="larangan-emoji">👔</span><div class="larangan-name">Pakaian berjahit (pria)</div></div>
+        <div class="larangan-item" onclick="showLarangan(3)"><span class="larangan-emoji">🐦</span><div class="larangan-name">Berburu binatang</div></div>
+        <div class="larangan-item" onclick="showLarangan(4)"><span class="larangan-emoji">💑</span><div class="larangan-name">Hubungan suami-istri</div></div>
+        <div class="larangan-item" onclick="showLarangan(5)"><span class="larangan-emoji">🌿</span><div class="larangan-name">Cabut/tebang tanaman</div></div>
+        <div class="larangan-item" onclick="showLarangan(6)"><span class="larangan-emoji">💍</span><div class="larangan-name">Menutup kepala (pria)</div></div>
+        <div class="larangan-item" onclick="showLarangan(7)"><span class="larangan-emoji">😠</span><div class="larangan-name">Bertengkar & berkata kotor</div></div>
+        <div class="larangan-item" onclick="showLarangan(8)"><span class="larangan-emoji">😷</span><div class="larangan-name">Tutup wajah (wanita)</div></div>
+      </div>
+
+      <div class="larangan-detail" id="laranganDetail">
+        <h4 id="ldTitle"></h4>
+        <p id="ldDesc"></p>
+        <span class="dam-badge" id="ldDam"></span>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h3>🧩 Studi Kasus Interaktif</h3>
+      <div id="kasusArea">
+        <div id="kasus1">
+          <p style="margin-bottom:12px; font-size:0.88rem; line-height:1.7;">
+            <strong>Skenario:</strong> Pak Ahmad sedang berihram. Karena tidak tahan, beliau menyemprotkan parfum ke bajunya. Apa yang wajib Pak Ahmad lakukan?
+          </p>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div class="quiz-opt" onclick="kasusJawab(0,'salah')"><span class="opt-letter">A</span>Tidak perlu melakukan apa-apa karena tidak disengaja</div>
+            <div class="quiz-opt" onclick="kasusJawab(1,'benar')"><span class="opt-letter">B</span>Wajib membayar fidyah (menyembelih seekor kambing atau berpuasa 3 hari atau memberi makan 6 orang miskin)</div>
+            <div class="quiz-opt" onclick="kasusJawab(2,'salah')"><span class="opt-letter">C</span>Harus mengulangi ihram dari awal</div>
+            <div class="quiz-opt" onclick="kasusJawab(3,'salah')"><span class="opt-letter">D</span>Umrohnya batal dan harus pulang</div>
+          </div>
+          <div class="feedback-box" id="kasusFeedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="doneModule(3)">Selesai Modul 3 — Ambil Kuis ✓</button>
+  </div>
+</div>

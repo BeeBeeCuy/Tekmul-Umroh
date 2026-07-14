@@ -5,8 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Belajar Ihram & Umroh — Media Interaktif</title>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Stylesheet dipecah per bagian (lihat folder css/). Urutan pemuatan
+       menentukan cascade, jadi jangan diubah tanpa alasan. -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/splash.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/lesson.css">
+  <link rel="stylesheet" href="css/quiz.css">
+  <link rel="stylesheet" href="css/certificate.css">
+  <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
 
@@ -31,7 +40,7 @@
   </div>
 
   <div id="app">
-    
+
     <div class="topbar">
       <div class="topbar-logo">
         <svg viewBox="0 0 18 18" fill="none">
@@ -49,510 +58,13 @@
       </div>
     </div>
 
-    <div class="main-content">
-      <div class="screen active" id="screenHome">
-        <div class="home-hero">
-          <div class="home-bismillah">الحج والعمرة</div>
-          <div class="home-tagline">Pelajari tata cara ihram & umroh secara lengkap dan interaktif</div>
-          <div class="home-xp">
-            <div class="xp-icon">🌟</div>
-            <div class="xp-info">
-              <div class="xp-label">Progress Keseluruhan</div>
-              <div class="xp-bar-wrap">
-                <div class="xp-bar-fill" id="xpBarHome"></div>
-              </div>
-            </div>
-            <div class="xp-val" id="xpValHome">0%</div>
-          </div>
-        </div>
+    <!-- Layar (Home, Modul 1–4, Kuis, Sertifikat) disuntikkan ke sini oleh
+         js/main.js dari file-file di folder screens/. -->
+    <div class="main-content" id="screensContainer"></div>
 
-        <div class="modules-grid">
-          <div class="module-card m1" onclick="goModule(1)">
-            <div class="module-icon">🕌</div>
-            <div class="module-num">Modul 1</div>
-            <div class="module-name">Pengertian Ihram</div>
-            <div class="module-desc">Definisi, makna, dan dasar syariat</div>
-            <div class="module-prog">
-              <div class="module-prog-fill" id="prog1" style="width:0%"></div>
-            </div>
-          </div>
-          
-          <div class="module-card m2" id="card2" onclick="goModule(2)">
-            <div class="module-icon">🤲</div>
-            <div class="module-num">Modul 2</div>
-            <div class="module-name">Niat & Tata Cara</div>
-            <div class="module-desc">Bacaan niat dan cara berpakaian ihram</div>
-            <div class="module-prog">
-              <div class="module-prog-fill" id="prog2" style="width:0%"></div>
-            </div>
-          </div>
-          
-          <div class="module-card m3 locked" id="card3" onclick="goModule(3)">
-            <div class="module-icon">🚫</div>
-            <div class="module-num">Modul 3</div>
-            <div class="module-name">Larangan Ihram</div>
-            <div class="module-desc">Hal-hal yang dilarang saat berihram</div>
-            <div class="module-prog">
-              <div class="module-prog-fill" id="prog3" style="width:0%"></div>
-            </div>
-          </div>
-          
-          <div class="module-card m4 locked" id="card4" onclick="goModule(4)">
-            <div class="module-icon">🕋</div>
-            <div class="module-num">Modul 4</div>
-            <div class="module-name">Tahapan Umroh</div>
-            <div class="module-desc">Tawaf, sa'i, tahallul lengkap</div>
-            <div class="module-prog">
-              <div class="module-prog-fill" id="prog4" style="width:0%"></div>
-            </div>
-          </div>
-        </div>
-
-        <div style="padding: 0 24px 20px; max-width:700px; margin:0 auto;">
-          <div class="content-card" style="cursor:pointer" onclick="goQuiz()">
-            <h3>📝 Evaluasi Akhir</h3>
-            <p>Uji pemahaman keseluruhan materi ihram dan umroh. Tersedia setelah menyelesaikan semua modul.</p>
-            <div style="margin-top:10px;">
-              <span class="badge badge-gold" id="evalBadge">🔒 Selesaikan semua modul</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="screen" id="screenM1">
-        <div class="lesson-header">
-          <button class="btn-back" onclick="goHome()">← Kembali</button>
-          <div class="lesson-title-bar">
-            <h2>Pengertian Ihram</h2>
-            <p>Modul 1 · 3 halaman</p>
-          </div>
-        </div>
-        
-        <div class="lesson-body">
-          <div class="lesson-tab-bar">
-            <div class="lesson-tab active" onclick="showTab('m1','t1')">Definisi</div>
-            <div class="lesson-tab" onclick="showTab('m1','t2')">Dalil</div>
-            <div class="lesson-tab" onclick="showTab('m1','t3')">Syarat Ihram</div>
-          </div>
-
-          <div id="m1-t1" class="tab-content active">
-            <div class="content-card">
-              <h3>🕌 Apa itu Ihram?</h3>
-              <p>Secara <strong>bahasa</strong>, ihram berasal dari kata <em>حرم</em> (harama) yang berarti mengharamkan atau melarang. Secara <strong>istilah syariat</strong>, ihram adalah niat memasuki ibadah haji atau umroh dengan meninggalkan semua larangan-larangannya.</p>
-            </div>
-            <div class="content-card">
-              <h3>📖 Makna Ihram</h3>
-              <div class="info-row">
-                <div class="info-icon">🌿</div>
-                <div class="info-text">
-                  <h4>Kesucian Jiwa</h4>
-                  <p>Ihram melambangkan kesucian dan pelepasan diri dari urusan duniawi menuju ibadah kepada Allah SWT</p>
-                </div>
-              </div>
-              <div class="info-row">
-                <div class="info-icon">⚖️</div>
-                <div class="info-text">
-                  <h4>Kesetaraan</h4>
-                  <p>Semua jamaah mengenakan pakaian yang sama — tidak ada perbedaan kaya miskin, raja atau rakyat biasa</p>
-                </div>
-              </div>
-              <div class="info-row">
-                <div class="info-icon">🔄</div>
-                <div class="info-text">
-                  <h4>Perbedaan Haji & Umroh</h4>
-                  <p>Ihram untuk umroh dimulai dari miqat dan berakhir dengan tahallul setelah gunting/cukur rambut</p>
-                </div>
-              </div>
-            </div>
-            <button class="btn-primary" onclick="completeTab(1,1); showTab('m1','t2')">Lanjut: Dalil Ihram →</button>
-          </div>
-
-          <div id="m1-t2" class="tab-content">
-            <div class="content-card">
-              <h3>📗 Dalil Al-Qur'an</h3>
-              <div class="arabic-text">وَأَتِمُّوا الْحَجَّ وَالْعُمْرَةَ لِلَّهِ</div>
-              <div class="latin-text">"Wa atimmul-hajja wal-'umrata lillāh"</div>
-              <div class="translate-text">"Dan sempurnakanlah ibadah haji dan umroh karena Allah" (QS. Al-Baqarah: 196)</div>
-            </div>
-            <div class="content-card">
-              <h3>📘 Hadis Nabi ﷺ</h3>
-              <div class="arabic-text" style="font-size:1.3rem;">إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ</div>
-              <div class="latin-text">"Innamal-a'mālu bin-niyyāt"</div>
-              <div class="translate-text">"Sesungguhnya setiap amalan tergantung pada niatnya" (HR. Bukhari & Muslim)</div>
-              <p style="font-size:0.83rem; color:var(--text-muted); text-align:center; margin-top:8px;">Dasar bahwa niat ihram adalah rukun utama yang wajib dipenuhi</p>
-            </div>
-            <button class="btn-primary" onclick="completeTab(1,2); showTab('m1','t3')">Lanjut: Syarat Ihram →</button>
-          </div>
-
-          <div id="m1-t3" class="tab-content">
-            <div class="content-card">
-              <h3>✅ Syarat Sah Ihram</h3>
-              <div class="info-row">
-                <div class="info-icon">☪️</div>
-                <div class="info-text">
-                  <h4>1. Islam</h4>
-                  <p>Ihram hanya sah dilakukan oleh seorang muslim yang mukallaf (baligh dan berakal)</p>
-                </div>
-              </div>
-              <div class="info-row">
-                <div class="info-icon">📍</div>
-                <div class="info-text">
-                  <h4>2. Di Miqat yang Benar</h4>
-                  <p>Berniat ihram di tempat yang telah ditetapkan oleh Rasulullah ﷺ sesuai asal daerah jamaah</p>
-                </div>
-              </div>
-              <div class="info-row">
-                <div class="info-icon">👔</div>
-                <div class="info-text">
-                  <h4>3. Pakaian Ihram yang Benar</h4>
-                  <p>Pria: 2 lembar kain putih tidak berjahit. Wanita: pakaian tertutup menutup aurat kecuali wajah dan telapak tangan</p>
-                </div>
-              </div>
-              <div class="info-row">
-                <div class="info-icon">🤲</div>
-                <div class="info-text">
-                  <h4>4. Niat yang Benar</h4>
-                  <p>Berniat dalam hati khusus untuk umroh atau haji, dianjurkan dilafalkan dengan lisan</p>
-                </div>
-              </div>
-            </div>
-            <button class="btn-primary" onclick="doneModule(1)">Selesai Modul 1 — Ambil Kuis ✓</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="screen" id="screenM2">
-        <div class="lesson-header">
-          <button class="btn-back" onclick="goHome()">← Kembali</button>
-          <div class="lesson-title-bar">
-            <h2>Niat & Tata Cara Ihram</h2>
-            <p>Modul 2 · 3 halaman</p>
-          </div>
-        </div>
-        
-        <div class="lesson-body">
-          <div class="lesson-tab-bar">
-            <div class="lesson-tab active" onclick="showTab('m2','t1')">Bacaan Niat</div>
-            <div class="lesson-tab" onclick="showTab('m2','t2')">Tata Cara Berpakaian</div>
-            <div class="lesson-tab" onclick="showTab('m2','t3')">Sunnah Ihram</div>
-          </div>
-
-          <div id="m2-t1" class="tab-content active">
-            <div class="content-card">
-              <h3>🤲 Niat Ihram Umroh</h3>
-              <div class="arabic-text">لَبَّيْكَ اللّٰهُمَّ عُمْرَةً</div>
-              <div class="latin-text">Labbaika Allāhumma 'umratan</div>
-              <div class="translate-text">"Ya Allah, aku sambut panggilan-Mu untuk menunaikan umroh"</div>
-              <div style="text-align:center; margin-top:10px;">
-                <button class="audio-btn" onclick="playAudio(this, 'audio/niat-umroh.mp3')">
-                    <span class="audio-dot paused"></span>
-                    <span class="audio-text">Dengarkan Lafal Niat</span>
-                </button>
-                </div>
-            </div>
-            <div class="content-card">
-              <h3>🕋 Talbiyah (wajib dibaca)</h3>
-              <div class="arabic-text" style="font-size:1.3rem; line-height:2.4;">
-                لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ<br />
-                لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ<br />
-                إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ<br />
-                لَا شَرِيكَ لَكَ
-              </div>
-              <div class="latin-text" style="font-size:0.78rem;">
-                Labbaika Allāhumma labbaik, Labbaika lā sharīka laka labbaik, Innal-hamda wan-ni'mata laka wal-mulk, Lā sharīka lak
-              </div>
-              <div class="translate-text" style="font-size:0.82rem; margin-top:6px;">
-                "Aku penuhi panggilan-Mu ya Allah, aku penuhi panggilan-Mu, tiada sekutu bagi-Mu, aku penuhi panggilan-Mu. Sesungguhnya segala puji, nikmat, dan kerajaan hanyalah milik-Mu, tiada sekutu bagi-Mu."
-              </div>
-              <div style="text-align:center; margin-top:10px;">
-            <button class="audio-btn" onclick="playAudio(this, 'audio/talbiyah.mp3')">
-                <span class="audio-dot paused"></span>
-                <span class="audio-text">Dengarkan Talbiyah</span>
-            </button>
-            </div>
-            </div>
-            <button class="btn-primary" onclick="completeTab(2,1); showTab('m2','t2')">Lanjut: Tata Cara Berpakaian →</button>
-          </div>
-
-          <div id="m2-t2" class="tab-content">
-            <div class="content-card">
-              <h3>👔 Cara Berpakaian Ihram — Pria</h3>
-              <div style="display:flex; flex-direction:column; gap:12px; margin-top:6px;">
-                <div style="background:var(--green-pale); border-radius:10px; padding:14px; display:flex; gap:12px; align-items:flex-start;">
-                  <div style="font-size:1.5rem;">1️⃣</div>
-                  <div>
-                    <strong style="font-size:0.88rem;">Mandi & Bersih</strong><br />
-                    <span style="font-size:0.82rem; color:var(--text-muted);">Mandi sunnah ihram, potong kuku, rapikan rambut sebelum memakai kain ihram</span>
-                  </div>
-                </div>
-                <div style="background:var(--green-pale); border-radius:10px; padding:14px; display:flex; gap:12px; align-items:flex-start;">
-                  <div style="font-size:1.5rem;">2️⃣</div>
-                  <div>
-                    <strong style="font-size:0.88rem;">Kain Ihram Bawah (Izar)</strong><br />
-                    <span style="font-size:0.82rem; color:var(--text-muted);">Ikat kain ihram putih dari pinggang ke bawah lutut, pastikan menutup aurat</span>
-                  </div>
-                </div>
-                <div style="background:var(--green-pale); border-radius:10px; padding:14px; display:flex; gap:12px; align-items:flex-start;">
-                  <div style="font-size:1.5rem;">3️⃣</div>
-                  <div>
-                    <strong style="font-size:0.88rem;">Kain Ihram Atas (Rida')</strong><br />
-                    <span style="font-size:0.82rem; color:var(--text-muted);">Selempangkan kain ihram kedua menutup bagian atas badan, bahu kiri dan kanan</span>
-                  </div>
-                </div>
-                <div style="background:var(--green-pale); border-radius:10px; padding:14px; display:flex; gap:12px; align-items:flex-start;">
-                  <div style="font-size:1.5rem;">4️⃣</div>
-                  <div>
-                    <strong style="font-size:0.88rem;">Sandal Terbuka</strong><br />
-                    <span style="font-size:0.82rem; color:var(--text-muted);">Pakai sandal yang tidak menutup tumit dan jari kaki (tidak boleh sepatu tertutup)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="content-card">
-              <h3>👗 Cara Berpakaian Ihram — Wanita</h3>
-              <p style="margin-bottom:10px;">Wanita tidak memiliki pakaian khusus, cukup mengenakan pakaian muslimah yang <strong>menutup seluruh aurat kecuali wajah dan telapak tangan</strong>.</p>
-              <div class="info-row">
-                <div class="info-icon">✅</div>
-                <div class="info-text">
-                  <h4>Boleh</h4>
-                  <p>Pakaian berwarna apa saja, tertutup rapat, tidak ketat, tidak transparan</p>
-                </div>
-              </div>
-              <div class="info-row">
-                <div class="info-icon">🚫</div>
-                <div class="info-text">
-                  <h4>Tidak Boleh</h4>
-                  <p>Memakai cadar (penutup wajah) dan sarung tangan selama ihram</p>
-                </div>
-              </div>
-            </div>
-            <button class="btn-primary" onclick="completeTab(2,2); showTab('m2','t3')">Lanjut: Sunnah Ihram →</button>
-          </div>
-
-          <div id="m2-t3" class="tab-content">
-            <div class="content-card">
-              <h3>⭐ Sunnah Sebelum Ihram</h3>
-              <div class="info-row">
-                <div class="info-icon">🚿</div>
-                <div class="info-text">
-                  <h4>Mandi Sunnah (Ghusl)</h4>
-                  <p>Disunnahkan mandi sebelum berihram, baik bagi pria maupun wanita termasuk yang sedang haid</p>
-                </div>
-              </div>
-              <div class="info-row">
-                <div class="info-icon">💈</div>
-                <div class="info-text">
-                  <h4>Memotong Kuku & Rambut</h4>
-                  <p>Disunnahkan memotong kuku, merapikan kumis, mencabut bulu ketiak, dan mencukur rambut kemaluan sebelum ihram</p>
-                </div>
-              </div>
-              <div class="info-row">
-                <div class="info-icon">🌸</div>
-                <div class="info-text">
-                  <h4>Memakai Wewangian (Khusus Sebelum)</h4>
-                  <p>Boleh memakai parfum di badan sebelum berihram. Setelah niat ihram diucapkan, dilarang memakai wewangian</p>
-                </div>
-              </div>
-              <div class="info-row">
-                <div class="info-icon">🙏</div>
-                <div class="info-text">
-                  <h4>Shalat Sunnah 2 Rakaat</h4>
-                  <p>Disunnahkan shalat 2 rakaat sebelum mengucapkan niat ihram di miqat</p>
-                </div>
-              </div>
-            </div>
-            <button class="btn-primary" onclick="doneModule(2)">Selesai Modul 2 — Ambil Kuis ✓</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="screen" id="screenM3">
-        <div class="lesson-header">
-          <button class="btn-back" onclick="goHome()">← Kembali</button>
-          <div class="lesson-title-bar">
-            <h2>Larangan Ihram</h2>
-            <p>Modul 3 · Interaktif</p>
-          </div>
-        </div>
-        
-        <div class="lesson-body">
-          <div class="content-card">
-            <h3>🚫 Larangan-Larangan Saat Berihram</h3>
-            <p style="margin-bottom:14px;">Klik setiap larangan untuk melihat penjelasan lengkap dan konsekuensinya (dam/fidyah).</p>
-            <div class="larangan-grid" id="laranganGrid">
-              <div class="larangan-item" onclick="showLarangan(0)"><span class="larangan-emoji">✂️</span><div class="larangan-name">Potong rambut/kuku</div></div>
-              <div class="larangan-item" onclick="showLarangan(1)"><span class="larangan-emoji">🌸</span><div class="larangan-name">Memakai wewangian</div></div>
-              <div class="larangan-item" onclick="showLarangan(2)"><span class="larangan-emoji">👔</span><div class="larangan-name">Pakaian berjahit (pria)</div></div>
-              <div class="larangan-item" onclick="showLarangan(3)"><span class="larangan-emoji">🐦</span><div class="larangan-name">Berburu binatang</div></div>
-              <div class="larangan-item" onclick="showLarangan(4)"><span class="larangan-emoji">💑</span><div class="larangan-name">Hubungan suami-istri</div></div>
-              <div class="larangan-item" onclick="showLarangan(5)"><span class="larangan-emoji">🌿</span><div class="larangan-name">Cabut/tebang tanaman</div></div>
-              <div class="larangan-item" onclick="showLarangan(6)"><span class="larangan-emoji">💍</span><div class="larangan-name">Menutup kepala (pria)</div></div>
-              <div class="larangan-item" onclick="showLarangan(7)"><span class="larangan-emoji">😠</span><div class="larangan-name">Bertengkar & berkata kotor</div></div>
-              <div class="larangan-item" onclick="showLarangan(8)"><span class="larangan-emoji">😷</span><div class="larangan-name">Tutup wajah (wanita)</div></div>
-            </div>
-            
-            <div class="larangan-detail" id="laranganDetail">
-              <h4 id="ldTitle"></h4>
-              <p id="ldDesc"></p>
-              <span class="dam-badge" id="ldDam"></span>
-            </div>
-          </div>
-
-          <div class="content-card">
-            <h3>🧩 Studi Kasus Interaktif</h3>
-            <div id="kasusArea">
-              <div id="kasus1">
-                <p style="margin-bottom:12px; font-size:0.88rem; line-height:1.7;">
-                  <strong>Skenario:</strong> Pak Ahmad sedang berihram. Karena tidak tahan, beliau menyemprotkan parfum ke bajunya. Apa yang wajib Pak Ahmad lakukan?
-                </p>
-                <div style="display:flex; flex-direction:column; gap:8px;">
-                  <div class="quiz-opt" onclick="kasusJawab(0,'salah')"><span class="opt-letter">A</span>Tidak perlu melakukan apa-apa karena tidak disengaja</div>
-                  <div class="quiz-opt" onclick="kasusJawab(1,'benar')"><span class="opt-letter">B</span>Wajib membayar fidyah (menyembelih seekor kambing atau berpuasa 3 hari atau memberi makan 6 orang miskin)</div>
-                  <div class="quiz-opt" onclick="kasusJawab(2,'salah')"><span class="opt-letter">C</span>Harus mengulangi ihram dari awal</div>
-                  <div class="quiz-opt" onclick="kasusJawab(3,'salah')"><span class="opt-letter">D</span>Umrohnya batal dan harus pulang</div>
-                </div>
-                <div class="feedback-box" id="kasusFeedback"></div>
-              </div>
-            </div>
-          </div>
-
-          <button class="btn-primary" onclick="doneModule(3)">Selesai Modul 3 — Ambil Kuis ✓</button>
-        </div>
-      </div>
-
-      <div class="screen" id="screenM4">
-        <div class="lesson-header">
-          <button class="btn-back" onclick="goHome()">← Kembali</button>
-          <div class="lesson-title-bar">
-            <h2>Tahapan Umroh</h2>
-            <p>Modul 4 · Timeline Interaktif</p>
-          </div>
-        </div>
-        
-        <div class="lesson-body">
-          <div class="content-card" style="margin-bottom:14px;">
-            <span class="section-label">Alur Pelaksanaan Umroh</span>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;">Klik setiap tahapan untuk melihat panduan lengkap, doa, dan petunjuk praktis.</p>
-            <div class="timeline">
-              <div class="timeline-item" onclick="toggleTL(0)">
-                <div class="timeline-left">
-                  <div class="tl-dot" style="background:var(--green);">1</div>
-                  <div class="tl-line"></div>
-                </div>
-                <div class="tl-content">
-                  <div class="tl-title">🕌 Ihram & Niat di Miqat</div>
-                  <div class="tl-sub">Berpakaian ihram dan mengucapkan niat</div>
-                  <div class="tl-expand" id="tl0">
-                    <p>Miqat adalah batas wilayah yang ditetapkan Rasulullah ﷺ sebagai tempat memulai ihram. Bagi jamaah dari Indonesia, miqat biasanya di <strong>Bir Ali (Dzulhulaifah)</strong> atau di atas pesawat menuju Jeddah.</p>
-                    <p style="margin-top:8px;">Setelah memakai pakaian ihram dan shalat 2 rakaat, ucapkan niat:</p>
-                    <div class="tl-doa">لَبَّيْكَ اللّٰهُمَّ عُمْرَةً</div>
-                    <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px; font-style:italic;">"Labbaika Allāhumma 'umratan"</p>
-                    <p style="font-size:0.82rem; margin-top:6px;">Setelah niat, mulailah membaca talbiyah dengan keras (pria) hingga melihat Ka'bah.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="timeline-item" onclick="toggleTL(1)">
-                <div class="timeline-left">
-                  <div class="tl-dot" style="background:#185FA5;">2</div>
-                  <div class="tl-line"></div>
-                </div>
-                <div class="tl-content">
-                  <div class="tl-title">🕋 Tawaf (7 Putaran)</div>
-                  <div class="tl-sub">Mengelilingi Ka'bah 7 kali berlawanan jarum jam</div>
-                  <div class="tl-expand" id="tl1">
-                    <p><strong>Tawaf</strong> dilakukan sebanyak 7 putaran, dimulai dan diakhiri di Hajar Aswad. Posisi Ka'bah selalu berada di sebelah kiri jamaah.</p>
-                    <p style="margin-top:8px;"><strong>Teknis pelaksanaan:</strong></p>
-                    <p style="margin-top:4px;">• Putaran 1-3 (Ramal): berjalan cepat untuk pria<br />• Putaran 4-7: berjalan biasa<br />• Idhtiba' (membuka bahu kanan) untuk pria saat tawaf</p>
-                    <div class="tl-doa" style="font-size:0.95rem;">سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلاَ إِلَهَ إِلاَّ اللَّهُ وَاللَّهُ أَكْبَرُ</div>
-                    <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px; font-style:italic;">Boleh berdoa dengan doa apa saja selama tawaf. Di atas adalah bacaan yang umum dibaca.</p>
-                    <p style="font-size:0.82rem; margin-top:8px;">Setelah tawaf: shalat 2 rakaat di belakang Maqam Ibrahim, lalu minum air zamzam.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="timeline-item" onclick="toggleTL(2)">
-                <div class="timeline-left">
-                  <div class="tl-dot" style="background:#534AB7;">3</div>
-                  <div class="tl-line"></div>
-                </div>
-                <div class="tl-content">
-                  <div class="tl-title">🏃 Sa'i (7 Kali Perjalanan)</div>
-                  <div class="tl-sub">Berjalan antara bukit Shafa dan Marwah</div>
-                  <div class="tl-expand" id="tl2">
-                    <p><strong>Sa'i</strong> dimulai dari bukit Shafa menuju Marwah (1 perjalanan), lalu Marwah ke Shafa (2), dan seterusnya hingga 7 perjalanan, <strong>berakhir di Marwah</strong>.</p>
-                    <p style="margin-top:8px;">Jarak antara Shafa dan Marwah ± 450 meter. Total perjalanan ± 3,15 km.</p>
-                    <p style="margin-top:8px;"><strong>Doa di bukit Shafa:</strong></p>
-                    <div class="tl-doa" style="font-size:0.95rem;">إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ</div>
-                    <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px; font-style:italic;">"Sesungguhnya Shafa dan Marwah termasuk syi'ar-syi'ar Allah" (QS. Al-Baqarah: 158)</p>
-                    <p style="font-size:0.82rem; margin-top:6px;">Di antara dua tanda hijau (pria berlari kecil), bacaan doa boleh bervariasi sesuai kemampuan.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="timeline-item" onclick="toggleTL(3)">
-                <div class="timeline-left">
-                  <div class="tl-dot" style="background:var(--gold);">4</div>
-                </div>
-                <div class="tl-content">
-                  <div class="tl-title">💈 Tahallul (Selesai)</div>
-                  <div class="tl-sub">Mencukur atau memendekkan rambut</div>
-                  <div class="tl-expand" id="tl3">
-                    <p><strong>Tahallul</strong> adalah tahap terakhir umroh, yaitu mencukur atau memendekkan rambut kepala, yang menandai berakhirnya ihram.</p>
-                    <p style="margin-top:8px;"><strong>Pria:</strong> Dianjurkan mencukur habis (halq) seluruh rambut. Boleh juga memendekkan (taqshir) minimal 3 helai dari seluruh bagian kepala.</p>
-                    <p style="margin-top:8px;"><strong>Wanita:</strong> Cukup memendekkan rambut sepanjang ruas jari (± 2-3 cm) dari ujung rambut.</p>
-                    <div class="tl-doa" style="font-size:0.95rem;">اللّٰهُمَّ اغْفِرْ لِلْمُحَلِّقِينَ</div>
-                    <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px; font-style:italic;">"Ya Allah, ampunilah orang-orang yang mencukur kepalanya" (HR. Bukhari)</p>
-                    <p style="font-size:0.82rem; margin-top:8px;">Setelah tahallul, semua larangan ihram menjadi halal kembali. <strong>Umroh telah selesai! 🎉</strong></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button class="btn-primary" onclick="doneModule(4)">Selesai Modul 4 — Ambil Kuis ✓</button>
-        </div>
-      </div>
-
-      <div class="screen" id="screenQuiz">
-        <div class="lesson-header">
-          <button class="btn-back" onclick="goHome()">← Kembali</button>
-          <div class="lesson-title-bar">
-            <h2 id="quizTitle">Evaluasi Akhir</h2>
-            <p>20 Soal Pilihan Ganda</p>
-          </div>
-        </div>
-        <div class="quiz-wrap" id="quizWrap"></div>
-      </div>
-
-      <div class="screen" id="screenSertifikat">
-        <div class="lesson-body">
-          <div class="sertifikat">
-            <div class="sertifikat-title">شَهَادَةُ الإِتْمَام</div>
-            <div class="sertifikat-sub">Sertifikat Penyelesaian</div>
-            <div class="sertifikat-name" id="sertName">Peserta Didik</div>
-            <div class="sertifikat-desc">
-              Telah berhasil menyelesaikan seluruh materi dan evaluasi pada program<br />
-              <strong>Media Interaktif Belajar Ihram & Tata Cara Umroh</strong><br />
-              dengan nilai yang memuaskan.
-            </div>
-            <div class="sertifikat-seal">
-              <div>✦</div>
-              <div>LULUS</div>
-              <div>✦</div>
-            </div>
-          </div>
-          <div style="text-align:center; margin-top:20px;">
-            <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:8px;">
-              بَارَكَ اللهُ فِيكُمْ — Semoga Allah memberkahi
-            </div>
-            <button class="btn-primary" style="width:auto; display:inline-block;" onclick="goHome()">← Kembali ke Menu</button>
-          </div>
-        </div>
-      </div>
-
-    </div><div class="bottom-nav" id="bottomNav">
+    <div class="bottom-nav" id="bottomNav">
       <div class="nav-indicator" id="navIndicator" style="width:20%; left:0%"></div>
-      
+
       <button class="nav-btn active" onclick="navTo(0,'screenHome')" id="navHome">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
           <path d="M3 12L12 4l9 8" />
@@ -560,7 +72,7 @@
         </svg>
         Beranda
       </button>
-      
+
       <button class="nav-btn" onclick="navTo(1,'screenM1')" id="navM1">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
           <rect x="4" y="4" width="16" height="16" rx="2" />
@@ -568,7 +80,7 @@
         </svg>
         Materi
       </button>
-      
+
       <button class="nav-btn" onclick="goQuiz()" id="navQuiz">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
           <circle cx="12" cy="12" r="9" />
@@ -576,8 +88,8 @@
         </svg>
         Kuis
       </button>
-      
-      <button class="nav-btn" onclick="navTo(3,'screenSertifikat')" id="navSert">
+
+      <button class="nav-btn" onclick="openSertifikat()" id="navSert">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
           <path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z" />
         </svg>
@@ -586,6 +98,15 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Data terlebih dahulu, lalu modul logika. main.js dimuat terakhir karena
+       ia yang men-fetch partial layar & menjalankan inisialisasi. -->
+  <script src="js/data/larangan-data.js"></script>
+  <script src="js/data/quiz-data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

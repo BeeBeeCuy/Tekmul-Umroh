@@ -1,0 +1,131 @@
+/* ─── APP SHELL ─── */
+#app {
+  display: none;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#app.visible {
+  display: flex;
+}
+
+/* ─── TOPBAR ─── */
+.topbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(26, 107, 74, 0.06);
+}
+
+.topbar-logo {
+  width: 34px;
+  height: 34px;
+  background: var(--green);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.topbar-logo svg {
+  width: 18px;
+  height: 18px;
+}
+
+.topbar-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--green);
+  flex: 1;
+}
+
+.topbar-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.progress-bar-top {
+  width: 100px;
+  height: 5px;
+  background: var(--green-mid);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--green);
+  border-radius: 3px;
+  transition: width 0.5s;
+}
+
+/* ─── MAIN LAYOUT ─── */
+.main-content {
+  flex: 1;
+}
+
+/* ─── SCREENS ─── */
+.screen {
+  display: none;
+  animation: screenIn 0.35s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes screenIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── BOTTOM NAV ─── */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  display: flex;
+  z-index: 100;
+  box-shadow: 0 -4px 16px rgba(26, 107, 74, 0.06);
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 10px 4px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  font-weight: 500;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: color 0.15s;
+}
+
+.nav-btn.active { color: var(--green); }
+.nav-btn svg { width: 22px; height: 22px; }
+
+.nav-indicator {
+  position: absolute;
+  top: 0;
+  height: 2.5px;
+  background: var(--green);
+  border-radius: 0 0 2px 2px;
+  transition: left 0.3s, width 0.3s;
+}

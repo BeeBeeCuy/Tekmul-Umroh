@@ -1,0 +1,68 @@
+<div class="screen active" id="screenHome">
+  <div class="home-hero">
+    <div class="home-bismillah">الحج والعمرة</div>
+    <div class="home-tagline">Pelajari tata cara ihram & umroh secara lengkap dan interaktif</div>
+    <div class="home-xp">
+      <div class="xp-icon">🌟</div>
+      <div class="xp-info">
+        <div class="xp-label">Progress Keseluruhan</div>
+        <div class="xp-bar-wrap">
+          <div class="xp-bar-fill" id="xpBarHome"></div>
+        </div>
+      </div>
+      <div class="xp-val" id="xpValHome">0%</div>
+    </div>
+  </div>
+
+  <div class="modules-grid">
+    <div class="module-card m1" onclick="goModule(1)">
+      <div class="module-icon">🕌</div>
+      <div class="module-num">Modul 1</div>
+      <div class="module-name">Pengertian Ihram</div>
+      <div class="module-desc">Definisi, makna, dan dasar syariat</div>
+      <div class="module-prog">
+        <div class="module-prog-fill" id="prog1" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="module-card m2" id="card2" onclick="goModule(2)">
+      <div class="module-icon">🤲</div>
+      <div class="module-num">Modul 2</div>
+      <div class="module-name">Niat & Tata Cara</div>
+      <div class="module-desc">Bacaan niat dan cara berpakaian ihram</div>
+      <div class="module-prog">
+        <div class="module-prog-fill" id="prog2" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="module-card m3 locked" id="card3" onclick="goModule(3)">
+      <div class="module-icon">🚫</div>
+      <div class="module-num">Modul 3</div>
+      <div class="module-name">Larangan Ihram</div>
+      <div class="module-desc">Hal-hal yang dilarang saat berihram</div>
+      <div class="module-prog">
+        <div class="module-prog-fill" id="prog3" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="module-card m4 locked" id="card4" onclick="goModule(4)">
+      <div class="module-icon">🕋</div>
+      <div class="module-num">Modul 4</div>
+      <div class="module-name">Tahapan Umroh</div>
+      <div class="module-desc">Tawaf, sa'i, tahallul lengkap</div>
+      <div class="module-prog">
+        <div class="module-prog-fill" id="prog4" style="width:0%"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 0 24px 20px; max-width:700px; margin:0 auto;">
+    <div class="content-card" style="cursor:pointer" onclick="goQuiz()">
+      <h3>📝 Evaluasi Akhir</h3>
+      <p>Uji pemahaman keseluruhan materi ihram dan umroh. Tersedia setelah menyelesaikan semua modul.</p>
+      <div style="margin-top:10px;">
+        <span class="badge badge-gold" id="evalBadge">🔒 Selesaikan semua modul</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+:root {
+  --green: #1a6b4a;
+  --green-light: #2d9b6f;
+  --green-pale: #e8f5ef;
+  --green-mid: #c3e8d5;
+  --gold: #b8892a;
+  --gold-light: #f0c96e;
+  --gold-pale: #fdf6e3;
+  --dark: #0f1c14;
+  --text: #1a2e22;
+  --text-muted: #5a7a65;
+  --border: #d4e8dc;
+  --bg: #f4f9f6;
+  --white: #ffffff;
+  --red: #c0392b;
+  --red-pale: #fdf0ee;
+  --blue: #1a4a7a;
+  --blue-pale: #eef3fb;
+  --radius: 14px;
+  --shadow: 0 4px 24px rgba(26, 107, 74, 0.10);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: 70px;
+}

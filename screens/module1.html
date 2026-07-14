@@ -1,0 +1,101 @@
+<div class="screen" id="screenM1">
+  <div class="lesson-header">
+    <button class="btn-back" onclick="goHome()">← Kembali</button>
+    <div class="lesson-title-bar">
+      <h2>Pengertian Ihram</h2>
+      <p>Modul 1 · 3 halaman</p>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <div class="lesson-tab-bar">
+      <div class="lesson-tab active" onclick="showTab('m1','t1')">Definisi</div>
+      <div class="lesson-tab" onclick="showTab('m1','t2')">Dalil</div>
+      <div class="lesson-tab" onclick="showTab('m1','t3')">Syarat Ihram</div>
+    </div>
+
+    <div id="m1-t1" class="tab-content active">
+      <div class="content-card">
+        <h3>🕌 Apa itu Ihram?</h3>
+        <p>Secara <strong>bahasa</strong>, ihram berasal dari kata <em>حرم</em> (harama) yang berarti mengharamkan atau melarang. Secara <strong>istilah syariat</strong>, ihram adalah niat memasuki ibadah haji atau umroh dengan meninggalkan semua larangan-larangannya.</p>
+      </div>
+      <div class="content-card">
+        <h3>📖 Makna Ihram</h3>
+        <div class="info-row">
+          <div class="info-icon">🌿</div>
+          <div class="info-text">
+            <h4>Kesucian Jiwa</h4>
+            <p>Ihram melambangkan kesucian dan pelepasan diri dari urusan duniawi menuju ibadah kepada Allah SWT</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">⚖️</div>
+          <div class="info-text">
+            <h4>Kesetaraan</h4>
+            <p>Semua jamaah mengenakan pakaian yang sama — tidak ada perbedaan kaya miskin, raja atau rakyat biasa</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🔄</div>
+          <div class="info-text">
+            <h4>Perbedaan Haji & Umroh</h4>
+            <p>Ihram untuk umroh dimulai dari miqat dan berakhir dengan tahallul setelah gunting/cukur rambut</p>
+          </div>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="completeTab(1,1); showTab('m1','t2')">Lanjut: Dalil Ihram →</button>
+    </div>
+
+    <div id="m1-t2" class="tab-content">
+      <div class="content-card">
+        <h3>📗 Dalil Al-Qur'an</h3>
+        <div class="arabic-text">وَأَتِمُّوا الْحَجَّ وَالْعُمْرَةَ لِلَّهِ</div>
+        <div class="latin-text">"Wa atimmul-hajja wal-'umrata lillāh"</div>
+        <div class="translate-text">"Dan sempurnakanlah ibadah haji dan umroh karena Allah" (QS. Al-Baqarah: 196)</div>
+      </div>
+      <div class="content-card">
+        <h3>📘 Hadis Nabi ﷺ</h3>
+        <div class="arabic-text" style="font-size:1.3rem;">إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ</div>
+        <div class="latin-text">"Innamal-a'mālu bin-niyyāt"</div>
+        <div class="translate-text">"Sesungguhnya setiap amalan tergantung pada niatnya" (HR. Bukhari & Muslim)</div>
+        <p style="font-size:0.83rem; color:var(--text-muted); text-align:center; margin-top:8px;">Dasar bahwa niat ihram adalah rukun utama yang wajib dipenuhi</p>
+      </div>
+      <button class="btn-primary" onclick="completeTab(1,2); showTab('m1','t3')">Lanjut: Syarat Ihram →</button>
+    </div>
+
+    <div id="m1-t3" class="tab-content">
+      <div class="content-card">
+        <h3>✅ Syarat Sah Ihram</h3>
+        <div class="info-row">
+          <div class="info-icon">☪️</div>
+          <div class="info-text">
+            <h4>1. Islam</h4>
+            <p>Ihram hanya sah dilakukan oleh seorang muslim yang mukallaf (baligh dan berakal)</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div class="info-text">
+            <h4>2. Di Miqat yang Benar</h4>
+            <p>Berniat ihram di tempat yang telah ditetapkan oleh Rasulullah ﷺ sesuai asal daerah jamaah</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">👔</div>
+          <div class="info-text">
+            <h4>3. Pakaian Ihram yang Benar</h4>
+            <p>Pria: 2 lembar kain putih tidak berjahit. Wanita: pakaian tertutup menutup aurat kecuali wajah dan telapak tangan</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🤲</div>
+          <div class="info-text">
+            <h4>4. Niat yang Benar</h4>
+            <p>Berniat dalam hati khusus untuk umroh atau haji, dianjurkan dilafalkan dengan lisan</p>
+          </div>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="doneModule(1)">Selesai Modul 1 — Ambil Kuis ✓</button>
+    </div>
+  </div>
+</div>

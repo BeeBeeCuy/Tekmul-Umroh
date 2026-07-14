@@ -1,0 +1,124 @@
+/* ─── SPLASH ─── */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(160deg, #0f2d1c 0%, #1a6b4a 60%, #0d4a30 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  gap: 20px;
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+#splash.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.04);
+}
+
+.splash-geo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.splash-geo::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 340px;
+  height: 340px;
+  border: 1.5px solid rgba(240, 201, 110, 0.18);
+  border-radius: 50%;
+  animation: rotateSlow 30s linear infinite;
+}
+
+.splash-geo::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+  width: 260px;
+  height: 260px;
+  border: 1px solid rgba(240, 201, 110, 0.12);
+  border-radius: 50%;
+  animation: rotateSlow 40s linear infinite reverse;
+}
+
+@keyframes rotateSlow {
+  to { transform: rotate(360deg); }
+}
+
+.splash-logo {
+  width: 90px;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(240, 201, 110, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulseIn 1s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.splash-logo svg {
+  width: 46px;
+  height: 46px;
+}
+
+@keyframes pulseIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.splash-title {
+  font-family: 'Amiri', serif;
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.8s 0.3s both;
+}
+
+.splash-sub {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.8s 0.5s both;
+}
+
+.splash-btn {
+  margin-top: 12px;
+  background: var(--gold-light);
+  color: var(--dark);
+  border: none;
+  padding: 14px 44px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  animation: fadeUp 0.8s 0.7s both;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.splash-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(184, 137, 42, 0.4);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}

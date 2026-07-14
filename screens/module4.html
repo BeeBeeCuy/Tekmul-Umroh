@@ -1,0 +1,92 @@
+<div class="screen" id="screenM4">
+  <div class="lesson-header">
+    <button class="btn-back" onclick="goHome()">← Kembali</button>
+    <div class="lesson-title-bar">
+      <h2>Tahapan Umroh</h2>
+      <p>Modul 4 · Timeline Interaktif</p>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <div class="content-card" style="margin-bottom:14px;">
+      <span class="section-label">Alur Pelaksanaan Umroh</span>
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;">Klik setiap tahapan untuk melihat panduan lengkap, doa, dan petunjuk praktis.</p>
+      <div class="timeline">
+        <div class="timeline-item" onclick="toggleTL(0)">
+          <div class="timeline-left">
+            <div class="tl-dot" style="background:var(--green);">1</div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-title">🕌 Ihram & Niat di Miqat</div>
+            <div class="tl-sub">Berpakaian ihram dan mengucapkan niat</div>
+            <div class="tl-expand" id="tl0">
+              <p>Miqat adalah batas wilayah yang ditetapkan Rasulullah ﷺ sebagai tempat memulai ihram. Bagi jamaah dari Indonesia, miqat biasanya di <strong>Bir Ali (Dzulhulaifah)</strong> atau di atas pesawat menuju Jeddah.</p>
+              <p style="margin-top:8px;">Setelah memakai pakaian ihram dan shalat 2 rakaat, ucapkan niat:</p>
+              <div class="tl-doa">لَبَّيْكَ اللّٰهُمَّ عُمْرَةً</div>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px; font-style:italic;">"Labbaika Allāhumma 'umratan"</p>
+              <p style="font-size:0.82rem; margin-top:6px;">Setelah niat, mulailah membaca talbiyah dengan keras (pria) hingga melihat Ka'bah.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" onclick="toggleTL(1)">
+          <div class="timeline-left">
+            <div class="tl-dot" style="background:#185FA5;">2</div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-title">🕋 Tawaf (7 Putaran)</div>
+            <div class="tl-sub">Mengelilingi Ka'bah 7 kali berlawanan jarum jam</div>
+            <div class="tl-expand" id="tl1">
+              <p><strong>Tawaf</strong> dilakukan sebanyak 7 putaran, dimulai dan diakhiri di Hajar Aswad. Posisi Ka'bah selalu berada di sebelah kiri jamaah.</p>
+              <p style="margin-top:8px;"><strong>Teknis pelaksanaan:</strong></p>
+              <p style="margin-top:4px;">• Putaran 1-3 (Ramal): berjalan cepat untuk pria<br />• Putaran 4-7: berjalan biasa<br />• Idhtiba' (membuka bahu kanan) untuk pria saat tawaf</p>
+              <div class="tl-doa" style="font-size:0.95rem;">سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلاَ إِلَهَ إِلاَّ اللَّهُ وَاللَّهُ أَكْبَرُ</div>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px; font-style:italic;">Boleh berdoa dengan doa apa saja selama tawaf. Di atas adalah bacaan yang umum dibaca.</p>
+              <p style="font-size:0.82rem; margin-top:8px;">Setelah tawaf: shalat 2 rakaat di belakang Maqam Ibrahim, lalu minum air zamzam.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" onclick="toggleTL(2)">
+          <div class="timeline-left">
+            <div class="tl-dot" style="background:#534AB7;">3</div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-title">🏃 Sa'i (7 Kali Perjalanan)</div>
+            <div class="tl-sub">Berjalan antara bukit Shafa dan Marwah</div>
+            <div class="tl-expand" id="tl2">
+              <p><strong>Sa'i</strong> dimulai dari bukit Shafa menuju Marwah (1 perjalanan), lalu Marwah ke Shafa (2), dan seterusnya hingga 7 perjalanan, <strong>berakhir di Marwah</strong>.</p>
+              <p style="margin-top:8px;">Jarak antara Shafa dan Marwah ± 450 meter. Total perjalanan ± 3,15 km.</p>
+              <p style="margin-top:8px;"><strong>Doa di bukit Shafa:</strong></p>
+              <div class="tl-doa" style="font-size:0.95rem;">إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ</div>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px; font-style:italic;">"Sesungguhnya Shafa dan Marwah termasuk syi'ar-syi'ar Allah" (QS. Al-Baqarah: 158)</p>
+              <p style="font-size:0.82rem; margin-top:6px;">Di antara dua tanda hijau (pria berlari kecil), bacaan doa boleh bervariasi sesuai kemampuan.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" onclick="toggleTL(3)">
+          <div class="timeline-left">
+            <div class="tl-dot" style="background:var(--gold);">4</div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-title">💈 Tahallul (Selesai)</div>
+            <div class="tl-sub">Mencukur atau memendekkan rambut</div>
+            <div class="tl-expand" id="tl3">
+              <p><strong>Tahallul</strong> adalah tahap terakhir umroh, yaitu mencukur atau memendekkan rambut kepala, yang menandai berakhirnya ihram.</p>
+              <p style="margin-top:8px;"><strong>Pria:</strong> Dianjurkan mencukur habis (halq) seluruh rambut. Boleh juga memendekkan (taqshir) minimal 3 helai dari seluruh bagian kepala.</p>
+              <p style="margin-top:8px;"><strong>Wanita:</strong> Cukup memendekkan rambut sepanjang ruas jari (± 2-3 cm) dari ujung rambut.</p>
+              <div class="tl-doa" style="font-size:0.95rem;">اللّٰهُمَّ اغْفِرْ لِلْمُحَلِّقِينَ</div>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px; font-style:italic;">"Ya Allah, ampunilah orang-orang yang mencukur kepalanya" (HR. Bukhari)</p>
+              <p style="font-size:0.82rem; margin-top:8px;">Setelah tahallul, semua larangan ihram menjadi halal kembali. <strong>Umroh telah selesai! 🎉</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="doneModule(4)">Selesai Modul 4 — Ambil Kuis ✓</button>
+  </div>
+</div>

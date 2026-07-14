@@ -1,0 +1,144 @@
+<div class="screen" id="screenM2">
+  <div class="lesson-header">
+    <button class="btn-back" onclick="goHome()">← Kembali</button>
+    <div class="lesson-title-bar">
+      <h2>Niat & Tata Cara Ihram</h2>
+      <p>Modul 2 · 3 halaman</p>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <div class="lesson-tab-bar">
+      <div class="lesson-tab active" onclick="showTab('m2','t1')">Bacaan Niat</div>
+      <div class="lesson-tab" onclick="showTab('m2','t2')">Tata Cara Berpakaian</div>
+      <div class="lesson-tab" onclick="showTab('m2','t3')">Sunnah Ihram</div>
+    </div>
+
+    <div id="m2-t1" class="tab-content active">
+      <div class="content-card">
+        <h3>🤲 Niat Ihram Umroh</h3>
+        <div class="arabic-text">لَبَّيْكَ اللّٰهُمَّ عُمْرَةً</div>
+        <div class="latin-text">Labbaika Allāhumma 'umratan</div>
+        <div class="translate-text">"Ya Allah, aku sambut panggilan-Mu untuk menunaikan umroh"</div>
+        <div style="text-align:center; margin-top:10px;">
+          <button class="audio-btn" onclick="playAudio(this, 'assets/audio/niat-umroh.mp3')">
+              <span class="audio-dot paused"></span>
+              <span class="audio-text">Dengarkan Lafal Niat</span>
+          </button>
+          </div>
+      </div>
+      <div class="content-card">
+        <h3>🕋 Talbiyah (wajib dibaca)</h3>
+        <div class="arabic-text" style="font-size:1.3rem; line-height:2.4;">
+          لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ<br />
+          لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ<br />
+          إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ<br />
+          لَا شَرِيكَ لَكَ
+        </div>
+        <div class="latin-text" style="font-size:0.78rem;">
+          Labbaika Allāhumma labbaik, Labbaika lā sharīka laka labbaik, Innal-hamda wan-ni'mata laka wal-mulk, Lā sharīka lak
+        </div>
+        <div class="translate-text" style="font-size:0.82rem; margin-top:6px;">
+          "Aku penuhi panggilan-Mu ya Allah, aku penuhi panggilan-Mu, tiada sekutu bagi-Mu, aku penuhi panggilan-Mu. Sesungguhnya segala puji, nikmat, dan kerajaan hanyalah milik-Mu, tiada sekutu bagi-Mu."
+        </div>
+        <div style="text-align:center; margin-top:10px;">
+      <button class="audio-btn" onclick="playAudio(this, 'assets/audio/talbiyah.mp3')">
+          <span class="audio-dot paused"></span>
+          <span class="audio-text">Dengarkan Talbiyah</span>
+      </button>
+      </div>
+      </div>
+      <button class="btn-primary" onclick="completeTab(2,1); showTab('m2','t2')">Lanjut: Tata Cara Berpakaian →</button>
+    </div>
+
+    <div id="m2-t2" class="tab-content">
+      <div class="content-card">
+        <h3>👔 Cara Berpakaian Ihram — Pria</h3>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-top:6px;">
+          <div style="background:var(--green-pale); border-radius:10px; padding:14px; display:flex; gap:12px; align-items:flex-start;">
+            <div style="font-size:1.5rem;">1️⃣</div>
+            <div>
+              <strong style="font-size:0.88rem;">Mandi & Bersih</strong><br />
+              <span style="font-size:0.82rem; color:var(--text-muted);">Mandi sunnah ihram, potong kuku, rapikan rambut sebelum memakai kain ihram</span>
+            </div>
+          </div>
+          <div style="background:var(--green-pale); border-radius:10px; padding:14px; display:flex; gap:12px; align-items:flex-start;">
+            <div style="font-size:1.5rem;">2️⃣</div>
+            <div>
+              <strong style="font-size:0.88rem;">Kain Ihram Bawah (Izar)</strong><br />
+              <span style="font-size:0.82rem; color:var(--text-muted);">Ikat kain ihram putih dari pinggang ke bawah lutut, pastikan menutup aurat</span>
+            </div>
+          </div>
+          <div style="background:var(--green-pale); border-radius:10px; padding:14px; display:flex; gap:12px; align-items:flex-start;">
+            <div style="font-size:1.5rem;">3️⃣</div>
+            <div>
+              <strong style="font-size:0.88rem;">Kain Ihram Atas (Rida')</strong><br />
+              <span style="font-size:0.82rem; color:var(--text-muted);">Selempangkan kain ihram kedua menutup bagian atas badan, bahu kiri dan kanan</span>
+            </div>
+          </div>
+          <div style="background:var(--green-pale); border-radius:10px; padding:14px; display:flex; gap:12px; align-items:flex-start;">
+            <div style="font-size:1.5rem;">4️⃣</div>
+            <div>
+              <strong style="font-size:0.88rem;">Sandal Terbuka</strong><br />
+              <span style="font-size:0.82rem; color:var(--text-muted);">Pakai sandal yang tidak menutup tumit dan jari kaki (tidak boleh sepatu tertutup)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-card">
+        <h3>👗 Cara Berpakaian Ihram — Wanita</h3>
+        <p style="margin-bottom:10px;">Wanita tidak memiliki pakaian khusus, cukup mengenakan pakaian muslimah yang <strong>menutup seluruh aurat kecuali wajah dan telapak tangan</strong>.</p>
+        <div class="info-row">
+          <div class="info-icon">✅</div>
+          <div class="info-text">
+            <h4>Boleh</h4>
+            <p>Pakaian berwarna apa saja, tertutup rapat, tidak ketat, tidak transparan</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🚫</div>
+          <div class="info-text">
+            <h4>Tidak Boleh</h4>
+            <p>Memakai cadar (penutup wajah) dan sarung tangan selama ihram</p>
+          </div>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="completeTab(2,2); showTab('m2','t3')">Lanjut: Sunnah Ihram →</button>
+    </div>
+
+    <div id="m2-t3" class="tab-content">
+      <div class="content-card">
+        <h3>⭐ Sunnah Sebelum Ihram</h3>
+        <div class="info-row">
+          <div class="info-icon">🚿</div>
+          <div class="info-text">
+            <h4>Mandi Sunnah (Ghusl)</h4>
+            <p>Disunnahkan mandi sebelum berihram, baik bagi pria maupun wanita termasuk yang sedang haid</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">💈</div>
+          <div class="info-text">
+            <h4>Memotong Kuku & Rambut</h4>
+            <p>Disunnahkan memotong kuku, merapikan kumis, mencabut bulu ketiak, dan mencukur rambut kemaluan sebelum ihram</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🌸</div>
+          <div class="info-text">
+            <h4>Memakai Wewangian (Khusus Sebelum)</h4>
+            <p>Boleh memakai parfum di badan sebelum berihram. Setelah niat ihram diucapkan, dilarang memakai wewangian</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🙏</div>
+          <div class="info-text">
+            <h4>Shalat Sunnah 2 Rakaat</h4>
+            <p>Disunnahkan shalat 2 rakaat sebelum mengucapkan niat ihram di miqat</p>
+          </div>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="doneModule(2)">Selesai Modul 2 — Ambil Kuis ✓</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,202 @@
+/* Kuis */
+.quiz-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.quiz-header {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  margin-bottom: 16px;
+}
+
+.quiz-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.quiz-num {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.quiz-timer {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.quiz-prog {
+  height: 5px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.quiz-prog-fill {
+  height: 100%;
+  background: var(--green);
+  border-radius: 3px;
+  transition: width 0.4s;
+}
+
+.quiz-question {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.quiz-opt {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 16px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.quiz-opt:hover, .quiz-opt.correct {
+  border-color: var(--green);
+  background: var(--green-pale);
+}
+
+.quiz-opt.wrong {
+  border-color: var(--red);
+  background: var(--red-pale);
+}
+
+.opt-letter {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.quiz-opt.correct .opt-letter {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
+
+.quiz-opt.wrong .opt-letter {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+}
+
+.feedback-box {
+  margin-top: 12px;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  display: none;
+}
+
+.feedback-box.show {
+  display: block;
+  animation: screenIn 0.2s ease;
+}
+
+.feedback-box.correct {
+  background: var(--green-pale);
+  border: 1px solid var(--green-mid);
+  color: var(--green);
+}
+
+.feedback-box.wrong {
+  background: var(--red-pale);
+  border: 1px solid #f5cbc6;
+  color: var(--red);
+}
+
+.btn-primary {
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 13px 32px;
+  font-size: 0.95rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+}
+
+.btn-primary:hover {
+  background: #155a3c;
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Hasil kuis */
+.hasil-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  text-align: center;
+}
+
+.hasil-score {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+}
+
+.hasil-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.hasil-status {
+  margin-top: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.hasil-status.lulus { color: var(--green); }
+.hasil-status.gagal { color: var(--red); }
+
+.hasil-pesan {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.6;
+}
