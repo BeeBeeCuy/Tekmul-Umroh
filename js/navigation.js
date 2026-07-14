@@ -52,16 +52,23 @@ function goModule(n) {
 }
 
 function showTab(mod, tab) {
-  document.querySelectorAll('#screen' + mod.toUpperCase() + ' .tab-content')
+  const screenSel = '#screen' + mod.toUpperCase();
+  document.querySelectorAll(screenSel + ' .tab-content')
     .forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('#screen' + mod.toUpperCase() + ' .lesson-tab')
-    .forEach(t => t.classList.remove('active'));
+  document.querySelectorAll(screenSel + ' .lesson-tab')
+    .forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
 
   document.getElementById(mod + '-' + tab).classList.add('active');
 
-  const tabs = document.querySelectorAll('#screen' + mod.toUpperCase() + ' .lesson-tab');
+  const tabs = document.querySelectorAll(screenSel + ' .lesson-tab');
   const tabIdx = parseInt(tab.replace('t', '')) - 1;
-  if (tabs[tabIdx]) tabs[tabIdx].classList.add('active');
+  if (tabs[tabIdx]) {
+    tabs[tabIdx].classList.add('active');
+    tabs[tabIdx].setAttribute('aria-selected', 'true');
+  }
 }
 
 function completeTab(mod, tab) {

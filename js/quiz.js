@@ -65,12 +65,12 @@ function showQuestion() {
       <div class="quiz-question">${q.q}</div>
       <div class="quiz-options">
         ${q.opts.map((o, i) => `
-          <div class="quiz-opt" onclick="answerQuiz(${i})" id="opt${i}">
+          <button type="button" class="quiz-opt" onclick="answerQuiz(${i})" id="opt${i}">
             <span class="opt-letter">${String.fromCharCode(65 + i)}</span>${o}
-          </div>
+          </button>
         `).join('')}
       </div>
-      <div class="feedback-box" id="quizFeedback"></div>
+      <div class="feedback-box" id="quizFeedback" aria-live="polite"></div>
     </div>
     <button class="btn-primary" id="nextBtn" disabled onclick="nextQuestion()">Lanjut →</button>
   `;

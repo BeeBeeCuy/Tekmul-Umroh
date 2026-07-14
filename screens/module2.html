@@ -8,10 +8,10 @@
   </div>
 
   <div class="lesson-body">
-    <div class="lesson-tab-bar">
-      <div class="lesson-tab active" onclick="showTab('m2','t1')">Bacaan Niat</div>
-      <div class="lesson-tab" onclick="showTab('m2','t2')">Tata Cara Berpakaian</div>
-      <div class="lesson-tab" onclick="showTab('m2','t3')">Sunnah Ihram</div>
+    <div class="lesson-tab-bar" role="tablist">
+      <button type="button" class="lesson-tab active" role="tab" aria-selected="true" onclick="showTab('m2','t1')">Bacaan Niat</button>
+      <button type="button" class="lesson-tab" role="tab" aria-selected="false" onclick="showTab('m2','t2')">Tata Cara Berpakaian</button>
+      <button type="button" class="lesson-tab" role="tab" aria-selected="false" onclick="showTab('m2','t3')">Sunnah Ihram</button>
     </div>
 
     <div id="m2-t1" class="tab-content active">

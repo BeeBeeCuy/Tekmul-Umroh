@@ -44,4 +44,17 @@ function toggleTL(idx) {
   const el = document.getElementById('tl' + idx);
   tlOpen[idx] = !tlOpen[idx];
   el.classList.toggle('open', tlOpen[idx]);
+
+  // Sinkronkan aria-expanded pada timeline-item (elemen role="button") pembungkusnya.
+  const item = el.closest('.timeline-item');
+  if (item) item.setAttribute('aria-expanded', tlOpen[idx] ? 'true' : 'false');
+}
+
+// Handler keyboard untuk timeline-item (role="button"): Enter/Space memicu toggle.
+// preventDefault mencegah Space menggulir halaman.
+function tlKey(event, idx) {
+  if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+    event.preventDefault();
+    toggleTL(idx);
+  }
 }
