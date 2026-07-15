@@ -96,6 +96,32 @@
   animation: fadeUp 0.8s 0.5s both;
 }
 
+.splash-input {
+  width: min(300px, 80vw);
+  padding: 13px 22px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(240, 201, 110, 0.45);
+  background: rgba(255, 255, 255, 0.10);
+  color: #fff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  text-align: center;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.8s 0.6s both;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.splash-input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.splash-input:focus {
+  border-color: var(--gold-light);
+  background: rgba(255, 255, 255, 0.16);
+}
+
 .splash-btn {
   margin-top: 12px;
   background: var(--gold-light);

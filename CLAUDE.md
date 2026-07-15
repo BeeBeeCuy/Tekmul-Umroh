@@ -33,10 +33,11 @@ Screen switching is done by toggling the `active` CSS class, not by changing the
 
 ### State & progression
 
-All state lives in a single in-memory `state` object in [js/state.js](js/state.js) (no persistence/localStorage — state resets on reload):
-- `state.xp`, `state.modulesDone[4]`, `state.tabsDone[...]`, `state.quizScore`, `state.quizDone`.
-- Modules are gated sequentially: Module 3 and 4 cards start with the `locked` class in [screens/home.html](screens/home.html); `doneModule(n)` removes `locked` from `card(n+1)` and awards XP, unlocking the next module.
-- `addXP(n)` → `updateProgressUI()` recomputes and writes XP totals, progress bar widths, module-card `done` state, and the final-evaluation badge directly into the DOM by element id (e.g. `prog1`, `card1`, `xpText`, `xpBarHome`, `evalBadge`). When adding new progress-affecting actions, route them through `addXP`/`updateProgressUI` rather than mutating the DOM ad hoc.
+All state lives in a single `state` object in [js/state.js](js/state.js), persisted to `localStorage` under key `tekmul-umroh-state`:
+- `state.xp`, `state.modulesDone[4]`, `state.tabsDone[...]`, `state.kasusDone`, `state.quizScore`, `state.quizDone`, `state.quizXP` (`{ attempted[5], passed[5] }`, index 0 = final eval, 1–4 = modules), `state.name`.
+- `saveState()` writes `state` to `localStorage`; it is called at the end of `updateProgressUI()`, so any progress change routed through `addXP`/`updateProgressUI` is persisted automatically. `loadState()` reads + validates (shape-checked, corrupt data ignored silently) and merges into `state`; it runs in `bootstrap()` after partials are injected, before the first `updateProgressUI()`. `resetProgress()` clears the key and reloads (wired to the "Mulai ulang progres" button on home).
+- Modules are gated sequentially: Module 3 and 4 cards start with the `locked` class in [screens/home.html](screens/home.html). **Lock state is derived from `state`, not the DOM**: `updateProgressUI()` removes `locked` from `card(n+1)` whenever `state.modulesDone[n-1]` is true — so a restored session re-opens completed modules automatically. `doneModule(n)` only flips `state` + awards XP; it does not touch the `locked` class.
+- `addXP(n)` → `updateProgressUI()` recomputes and writes XP totals, progress bar widths, module-card `done`/`locked` state, and the final-evaluation badge directly into the DOM by element id (e.g. `prog1`, `card1`, `xpText`, `xpBarHome`, `evalBadge`), then calls `saveState()`. When adding new progress-affecting actions, route them through `addXP`/`updateProgressUI` rather than mutating the DOM ad hoc.
 
 ### Quiz engine
 

@@ -5,9 +5,18 @@
 let currentQuizIdx = 0;
 let answered = false;
 
+// Identitas kuis yang sedang berjalan (0 = evaluasi akhir, 1–4 = modul) dan
+// apakah percobaan ini berhak atas XP per-soal (hanya percobaan pertama).
+let activeQuizModule = 0;
+let quizAwardsXP = false;
+
 function startQuiz(moduleNum) {
   currentQuizIdx = 0;
   answered = false;
+
+  // Simpan identitas kuis; XP per-soal hanya untuk percobaan pertama kuis ini.
+  activeQuizModule = moduleNum;
+  quizAwardsXP = !state.quizXP.attempted[moduleNum];
 
   // Ambil 5 soal untuk kuis modul, atau evaluasi akhir (moduleNum = 0)
   const questions = shuffleArr(quizData).slice(0, 5);
@@ -56,12 +65,12 @@ function showQuestion() {
       <div class="quiz-question">${q.q}</div>
       <div class="quiz-options">
         ${q.opts.map((o, i) => `
-          <div class="quiz-opt" onclick="answerQuiz(${i})" id="opt${i}">
+          <button type="button" class="quiz-opt" onclick="answerQuiz(${i})" id="opt${i}">
             <span class="opt-letter">${String.fromCharCode(65 + i)}</span>${o}
-          </div>
+          </button>
         `).join('')}
       </div>
-      <div class="feedback-box" id="quizFeedback"></div>
+      <div class="feedback-box" id="quizFeedback" aria-live="polite"></div>
     </div>
     <button class="btn-primary" id="nextBtn" disabled onclick="nextQuestion()">Lanjut →</button>
   `;
@@ -88,7 +97,8 @@ function answerQuiz(i) {
     score++;
     fb.className = 'feedback-box show correct';
     fb.innerHTML = '✅ <strong>Benar!</strong> ' + q.explain;
-    addXP(15);
+    // +15 hanya pada percobaan pertama kuis ini; pengulangan untuk latihan tanpa XP.
+    if (quizAwardsXP) addXP(15);
   } else {
     fb.className = 'feedback-box show wrong';
     fb.innerHTML = '❌ <strong>Kurang tepat.</strong> ' + q.explain;
@@ -109,7 +119,13 @@ function nextQuestion() {
   const pct = Math.round(score / qArr.length * 100);
   const lulus = pct >= 70;
 
-  if (lulus) addXP(100);
+  // Bonus lulus +100 hanya sekali per kuis (saat pertama kali lulus kuis ini).
+  if (lulus && !state.quizXP.passed[activeQuizModule]) {
+    state.quizXP.passed[activeQuizModule] = true;
+    addXP(100);
+  }
+  // Tandai kuis ini sudah pernah diselesaikan → percobaan berikutnya tanpa XP per-soal.
+  state.quizXP.attempted[activeQuizModule] = true;
 
   // Sertifikat hanya terbuka bila LULUS dan semua modul telah diselesaikan.
   const earnedCert = lulus && state.modulesDone.every(Boolean);

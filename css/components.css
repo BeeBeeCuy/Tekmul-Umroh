@@ -52,6 +52,61 @@
   display: block;
 }
 
+/* ─── AKSESIBILITAS ─── */
+
+/* Elemen interaktif ini kini memakai <button> (agar bisa diakses keyboard).
+   Netralkan hanya gaya bawaan tombol yang berbeda dari <div> — font & appearance.
+   Warna, border, padding, ukuran font, dan cursor tetap dari kelas masing-masing
+   (didefinisikan di lesson.css/quiz.css), jadi tampilan tidak berubah. */
+.lesson-tab,
+.larangan-item,
+.quiz-opt {
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* .quiz-opt mengisi penuh lebar kolom seperti versi <div> sebelumnya. */
+.quiz-opt {
+  width: 100%;
+  text-align: left;
+}
+
+/* Indikator fokus keyboard yang jelas (jangan menghilangkan outline). */
+.lesson-tab:focus-visible,
+.larangan-item:focus-visible,
+.quiz-opt:focus-visible,
+.timeline-item:focus-visible,
+.nav-btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-back:focus-visible,
+.audio-btn:focus-visible,
+.splash-btn:focus-visible,
+.splash-input:focus-visible,
+.btn-reset:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+/* Tombol kecil "Mulai ulang progres" di beranda */
+.btn-reset {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.btn-reset:hover {
+  color: var(--red);
+  background: var(--red-pale);
+}
+
 /* responsive */
 @media (max-width: 480px) {
   .modules-grid { grid-template-columns: 1fr 1fr; gap: 10px; padding: 16px; }

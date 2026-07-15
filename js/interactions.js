@@ -33,11 +33,28 @@ function kasusJawab(idx, correct) {
     ? '✅ Tepat! Menggunakan wewangian saat ihram wajib membayar fidyah (berpuasa 3 hari, atau memberi makan 6 orang miskin, atau menyembelih seekor kambing).'
     : '❌ Belum tepat. Jawaban yang benar adalah B — wajib membayar fidyah karena melanggar larangan ihram.';
 
-  if (correct === 'benar') addXP(20);
+  // XP studi kasus hanya diberikan sekali (mencegah farming, penting setelah state persist).
+  if (correct === 'benar' && !state.kasusDone) {
+    state.kasusDone = true;
+    addXP(20);
+  }
 }
 
 function toggleTL(idx) {
   const el = document.getElementById('tl' + idx);
   tlOpen[idx] = !tlOpen[idx];
   el.classList.toggle('open', tlOpen[idx]);
+
+  // Sinkronkan aria-expanded pada timeline-item (elemen role="button") pembungkusnya.
+  const item = el.closest('.timeline-item');
+  if (item) item.setAttribute('aria-expanded', tlOpen[idx] ? 'true' : 'false');
+}
+
+// Handler keyboard untuk timeline-item (role="button"): Enter/Space memicu toggle.
+// preventDefault mencegah Space menggulir halaman.
+function tlKey(event, idx) {
+  if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+    event.preventDefault();
+    toggleTL(idx);
+  }
 }

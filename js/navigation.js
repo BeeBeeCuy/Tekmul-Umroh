@@ -3,6 +3,12 @@
 // (bukan lewat URL/router). Bottom nav diperbarui via updateNavActive().
 
 function startApp() {
+  // Ambil nama dari input splash; kosong → fallback 'Peserta Didik'.
+  const input = document.getElementById('namaInput');
+  const nama = input ? input.value.trim() : '';
+  state.name = nama || 'Peserta Didik';
+  saveState(); // simpan nama agar bisa mem-prefill input saat reload berikutnya
+
   document.getElementById('splash').classList.add('hide');
   setTimeout(() => {
     document.getElementById('app').classList.add('visible');
@@ -46,23 +52,32 @@ function goModule(n) {
 }
 
 function showTab(mod, tab) {
-  document.querySelectorAll('#screen' + mod.toUpperCase() + ' .tab-content')
+  const screenSel = '#screen' + mod.toUpperCase();
+  document.querySelectorAll(screenSel + ' .tab-content')
     .forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('#screen' + mod.toUpperCase() + ' .lesson-tab')
-    .forEach(t => t.classList.remove('active'));
+  document.querySelectorAll(screenSel + ' .lesson-tab')
+    .forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
 
   document.getElementById(mod + '-' + tab).classList.add('active');
 
-  const tabs = document.querySelectorAll('#screen' + mod.toUpperCase() + ' .lesson-tab');
+  const tabs = document.querySelectorAll(screenSel + ' .lesson-tab');
   const tabIdx = parseInt(tab.replace('t', '')) - 1;
-  if (tabs[tabIdx]) tabs[tabIdx].classList.add('active');
+  if (tabs[tabIdx]) {
+    tabs[tabIdx].classList.add('active');
+    tabs[tabIdx].setAttribute('aria-selected', 'true');
+  }
 }
 
 function completeTab(mod, tab) {
-  if (state.tabsDone[mod - 1]) {
-    state.tabsDone[mod - 1][tab - 1] = true;
+  const tabs = state.tabsDone[mod - 1];
+  // XP hanya diberikan sekali per tab; kunjungan ulang tidak menambah XP.
+  if (tabs && !tabs[tab - 1]) {
+    tabs[tab - 1] = true;
+    addXP(10);
   }
-  addXP(10);
 }
 
 function doneModule(n) {
@@ -71,18 +86,18 @@ function doneModule(n) {
     addXP(50);
   }
 
-  // Buka kunci modul berikutnya
-  if (n < 4) {
-    const nextCard = document.getElementById('card' + (n + 1));
-    if (nextCard) nextCard.classList.remove('locked');
-  }
-
+  // Gembok modul berikutnya kini diturunkan dari state di updateProgressUI().
   updateProgressUI();
   // Lanjut ke kuis mini modul
   startQuiz(n);
 }
 
 function showSertifikat() {
+  // Isi nama peserta dan nilai kelulusan ke sertifikat dari state.
+  document.getElementById('sertName').textContent = state.name;
+  const scoreEl = document.getElementById('sertScore');
+  if (scoreEl) scoreEl.textContent = state.quizScore;
+
   showScreen('screenSertifikat');
   updateNavActive(3);
 }
